@@ -1,5 +1,9 @@
 package com.united;
 
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,4 +14,8 @@ public class SimpleFlightSearchApplication {
 		SpringApplication.run(SimpleFlightSearchApplication.class, args);
 	}
 
+	@PostConstruct
+	public void setTimeZoneUTC() {
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+	}
 }

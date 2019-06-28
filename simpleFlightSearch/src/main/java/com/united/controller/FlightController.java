@@ -1,5 +1,6 @@
 package com.united.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +42,11 @@ public class FlightController {
 	}
 	
 	@PostMapping(value= "/search" )
-	public ResponseEntity<Object> searchFlights(@RequestBody FlightSearchDTO flightSearchDTO){
+	public ResponseEntity<Object> searchFlights(@RequestBody FlightSearchDTO flightSearchDTO) throws ParseException{
 		List<Flight> flights = new ArrayList<Flight>();
-		System.out.println(flightSearchDTO.getQueryDate());
 		if(flightSearchDTO.getSearchCriteria() == SearchCriteria.LOCATIONS) {
 			System.out.println("Searching based on location and date");
+			System.out.println(flightSearchDTO.getQueryDate());
 			flights = this.flightService.getFLightByAddressAndDeparture(flightSearchDTO.getDestinationOrOrigin(), flightSearchDTO.getQueryDate() );
 		}
 		else if (flightSearchDTO.getSearchCriteria() == SearchCriteria.FLIGHTNUMBER) {

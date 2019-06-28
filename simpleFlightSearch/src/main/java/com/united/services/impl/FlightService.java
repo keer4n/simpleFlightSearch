@@ -1,5 +1,8 @@
 package com.united.services.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -24,13 +27,25 @@ public class FlightService implements IFlightService{
 		return this.flightRepository.findByflightNumber(flightNumber);
 	}
 	
-	public List<Flight> getFlightByFlightNumberAndDate(int number, Date date) {
-		return this.flightRepository.findByFlightNumberAndDeparture(number, date);
+	public List<Flight> getFlightByFlightNumberAndDate(int number, Date date) throws ParseException {
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String dateQuery = formatter.format(date);
+		
+//		return this.flightRepository.findByFlightNumberAndDeparture(number, date);
+		System.out.println(dateQuery);
+		return this.flightRepository.findByFlightNumberandDeparture(number, dateQuery);
 	}
 	
 	public List<Flight> getFLightByAddressAndDeparture(String originOrDestinationAddress, Date departure) {
-		return this.flightRepository.findByAddressAndDeparture(originOrDestinationAddress, departure);
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String dateQuery = formatter.format(departure);
+		return this.flightRepository.findByAddressAndDeparture(originOrDestinationAddress, dateQuery);
 	}
+	
+	
+
 
 
 }

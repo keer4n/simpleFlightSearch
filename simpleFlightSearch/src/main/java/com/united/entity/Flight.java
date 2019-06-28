@@ -39,9 +39,7 @@ public class Flight {
 	@Column(name = "DISTANCE")
 	private double distance;
 	
-	@Column(name = "TRAVELTIME")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date travelTime;
+	private String travelTime;
 	
 	@Column(name = "STATUS")
 	private String status;
@@ -94,10 +92,10 @@ public class Flight {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	public Date getTravelTime() {
+	public String getTravelTime() {
 		return travelTime;
 	}
-	public void setTravelTime(Date travelTime) {
+	public void setTravelTime(String travelTime) {
 		this.travelTime = travelTime;
 	}
 	public String getStatus() {
