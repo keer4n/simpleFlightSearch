@@ -1,0 +1,33 @@
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">flightNumber</th>
+      <th scope="col">carrier</th>
+      <th scope="col">origin</th>
+      <th scope="col">departure</th>
+      <th scope="col">destination</th>
+      <th scope="col">arrival</th>
+      <th scope="col">aircraft</th>
+      <th scope="col">distance</th>
+      <th scope="col">travelTime</th>
+      <th scope="col">status</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor = "let result of results">
+      <th scope="row">{{result.flightNumber}}</th>
+      <td>{{result.carrier}}</td>
+      <td>@{{result.origin}}</td>
+      <td>@{{result.departure}}</td>
+      <td>@{{result.destination}}</td>
+      <td>@{{result.arrival}}</td>
+      <td>@{{result.aircraft}}</td>
+      <td>@{{result.distance}}</td>
+      <td>@{{result.travelTime}}</td>
+      <td>@{{result.status}}</td>
+    </tr>
+   
+  </tbody>
+</table>
