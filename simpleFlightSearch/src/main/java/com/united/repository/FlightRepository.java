@@ -15,7 +15,7 @@ public interface FlightRepository extends CrudRepository<Flight, Integer>{
 	List<Flight> findAll();
 	List<Flight> findByflightNumber (int flightNumber);
 
-	@Query("SELECT f FROM Flight f WHERE f.flightNumber = ?1 ")
+	@Query("SELECT f FROM Flight f WHERE f.flightNumber = ?1")
 	List<Flight> findByFlightNumberAndDeparture(int flightNumber, Date departure);
 	
 	@Query("SELECT f from Flight f WHERE f.destination = ?1 OR f.origin = ?1" )

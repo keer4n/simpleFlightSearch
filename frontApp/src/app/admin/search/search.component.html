@@ -1,31 +1,38 @@
-<nav class = "navbar navbar-default">
-    <div class = "container">
-      <div class = 'navbar-header'>
-                          <form  [formGroup]="searchForm" (ngSubmit)="onSubmitFlightNumber()" class="form">
-                              <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg rounded-0" formControlName = "flightNumber" placeholder="Flight Number">
-                              </div>
-                              <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg rounded-0" formControlName="date" placeholder = "date">
-                              </div>
-                              <!-- <ng-datepicker [(ngModel)]="date"></ng-datepicker> -->
+<div class = "container">    
+    <form  [formGroup]="searchForm" (ngSubmit)="onSubmitFlightNumber()" class="form">
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <input type="text" class="form-control form-control-lg rounded-0" formControlName = "flightNumber" placeholder="Flight Number">
+             </div>
+             <div class="col-sm-3 my-1">
+                <input type="text" class="form-control form-control-lg rounded-0" formControlName="date" placeholder = "date">
+            </div>
+            <div class="col-sm-3 my-1">
+                <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin" [disabled]="!searchForm.valid">Search</button>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+                <div class="invalid-feedback" *ngIf="!searchForm.get('date').valid && searchForm.get('flightNumber').touched">Oops, you missed this one.</div>
+        </div>
+    </form>
+</div>    
 
-                              <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin">Search</button>
-                          </form>
-                      </div>
-                      <!--/card-block-->
-                  
-                    <div class="card-body">
-                        <form  [formGroup]="searchFormTwo" (ngSubmit)="onSubmitAddress()" class="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-lg rounded-0" formControlName = "address" placeholder = "Origin Or Destination">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-lg rounded-0" formControlName="newDate" placeholder = "date">
-                            </div>
-
-                            <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin">Search</button>
-                        </form>
-                    </div>
-                    <!--/card-block-->
-                
+<div class = "container">    
+    <form  [formGroup]="searchFormTwo" (ngSubmit)="onSubmitAddress()" class="form">
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <input type="text" class="form-control form-control-lg rounded-0" formControlName = "address" placeholder = "Origin Or Destination">
+            </div>    
+            <div class="col-sm-3 my-1">
+                <input type="text" class="form-control form-control-lg rounded-0" formControlName="newDate" placeholder = "date">
+            </div>
+            <div class="col-sm-3 my-1">
+                <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin" [disabled]="!searchFormTwo.valid">Search</button>
+            </div>    
+            <div class="form-row align-items-center">
+                    <div class="invalid-feedback" *ngIf="!searchFormTwo.get('address').touched && searchFormTwo.get('newDate').touched">Oops, you missed this one.</div>
+            </div>
+        </div>    
+    </form>
+</div>
+<!--/card-block-->
