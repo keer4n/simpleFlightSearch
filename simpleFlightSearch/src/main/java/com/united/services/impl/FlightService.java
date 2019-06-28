@@ -30,16 +30,13 @@ public class FlightService implements IFlightService{
 	public List<Flight> getFlightByFlightNumberAndDate(int number, Date date) throws ParseException {
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		
-		String dateQuery = formatter.format(date);
-		
-//		return this.flightRepository.findByFlightNumberAndDeparture(number, date);
+		String dateQuery = formatter.format(date);		
 		System.out.println(dateQuery);
 		return this.flightRepository.findByFlightNumberandDeparture(number, dateQuery);
 	}
 	
 	public List<Flight> getFLightByAddressAndDeparture(String originOrDestinationAddress, Date departure) {
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String dateQuery = formatter.format(departure);
 		return this.flightRepository.findByAddressAndDeparture(originOrDestinationAddress, dateQuery);
 	}
