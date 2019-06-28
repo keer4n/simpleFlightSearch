@@ -22,4 +22,8 @@ public find(input) {
   return this.http.post("http://localhost:8080/flights/search", input);
 }
 
+public finfByFlightNumber(flightNumber: Number) {
+  return this.http.get("http://localhost:8080/flights/" + flightNumber);
+}
+
 }

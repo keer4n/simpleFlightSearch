@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './admin/search/search.component';
 import { ResultComponent } from './admin/result/result.component';
 import { SrchService } from './admin/srch.service';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import { SrchService } from './admin/srch.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    NgDatepickerModule
   ],
   providers: [SrchService],
   bootstrap: [AppComponent]

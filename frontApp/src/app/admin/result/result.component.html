@@ -1,5 +1,5 @@
 
-<table class="table table-hover">
+<table class="table table-hover" *ngIf = "display">
   <thead>
     <tr>
       <th scope="col">flightNumber</th>
@@ -19,14 +19,14 @@
     <tr *ngFor = "let result of results">
       <th scope="row">{{result.flightNumber}}</th>
       <td>{{result.carrier}}</td>
-      <td>@{{result.origin}}</td>
-      <td>@{{result.departure}}</td>
-      <td>@{{result.destination}}</td>
-      <td>@{{result.arrival}}</td>
-      <td>@{{result.aircraft}}</td>
-      <td>@{{result.distance}}</td>
-      <td>@{{result.travelTime}}</td>
-      <td>@{{result.status}}</td>
+      <td>{{result.origin}}</td>
+      <td>{{result.departure | date}}</td>
+      <td>{{result.destination}}</td>
+      <td>{{result.arrival | date}}</td>
+      <td>{{result.aircraft}}</td>
+      <td>{{result.distance}}</td>
+      <td>{{result.travelTime | date}}</td>
+      <td>{{result.status}}</td>
     </tr>
    
   </tbody>

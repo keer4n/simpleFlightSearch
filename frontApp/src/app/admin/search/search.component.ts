@@ -4,6 +4,9 @@ import { SrchService } from '../srch.service';
 import { Router } from '@angular/router';
 import { UserInput } from '../dto/UserInput';
 import { FlightDetails } from '../dto/flightDetails';
+import * as enLocale from 'date-fns/locale/en';
+import { DatepickerOptions } from 'ng2-datepicker';
+
 
 @Component({
   selector: 'app-search',
@@ -20,7 +23,11 @@ export class SearchComponent implements OnInit {
   private userInput: UserInput;
   private searchForm: FormGroup;
   private searchFormTwo: FormGroup;
-
+  //date : Date;
+  options: DatepickerOptions = {
+    locale: enLocale,
+    barTitleFormat: 'MMMM YYYY',
+  };
   
   constructor(
     private formBuilder: FormBuilder,
@@ -32,11 +39,14 @@ export class SearchComponent implements OnInit {
       remember: [1, [Validators.required]]
     });
 
+    //this.date = new Date(Date.now());
+
     this.searchFormTwo = formBuilder.group({
       address: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      newDate: ['', [Validators.required]],
       remember: [1, [Validators.required]]
     });
+
 
   }
  
@@ -48,7 +58,6 @@ export class SearchComponent implements OnInit {
       destinationOrOrigin: null,
       searchCriteria:  "FLIGHTNUMBER"
     };
-    
     
     this.srchService.find(this.userInput)
     .subscribe(res => {
@@ -64,14 +73,17 @@ export class SearchComponent implements OnInit {
 
   onSubmitAddress() {
     console.log(this.searchForm);
-    this.userInput.queryDate = this.searchForm.value.date;
-    this.userInput.flightNumber = null;
-    this.userInput.destinationOrOrigin = this.searchForm.value.address;
-    this.userInput.searchCriteria = "FLIGHTNUMBER";
+    this.userInput = {
+      queryDate: this.searchFormTwo.value.newDate,
+      flightNumber: null,
+      destinationOrOrigin: this.searchFormTwo.value.address,
+      searchCriteria:  "LOCATIONS"
+    };
     
     this.srchService.find(this.userInput)
     .subscribe(res => {
-      this.srchService.userInputEmitter.emit(res['data']);
+      this.results = res as FlightDetails[];
+      this.srchService.userInputEmitter.emit(this.results);
     },
     err => console.log(err)
     );

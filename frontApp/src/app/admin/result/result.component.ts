@@ -9,8 +9,7 @@ import { FlightDetails } from '../dto/flightDetails';
 })
 export class ResultComponent implements OnInit {
   results: FlightDetails[];
-
-
+  display: boolean = false;
 
   constructor(private srchService: SrchService) {
    }
@@ -18,6 +17,7 @@ export class ResultComponent implements OnInit {
    ngOnInit() {
     this.srchService.userInputEmitter.subscribe(results => {
       this.results = results;
+      this.display = true;
     });
   }
 

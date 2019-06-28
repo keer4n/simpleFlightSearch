@@ -35,7 +35,7 @@ public class FlightController {
 		return new ResponseEntity<>(this.flightService.getAllFlights(), new HttpHeaders(), HttpStatus.OK);
 	}
 	
-	@GetMapping (value = "{/flightNumber}")
+	@GetMapping (value = "/{flightNumber}")
 	public ResponseEntity<List<Flight>> getFlightsbyId(HttpServletRequest request, HttpServletResponse response, @PathVariable ("flightNumber") int flightNumber){
 		return new ResponseEntity<>(this.flightService.getFlightByFlightNumber(flightNumber), new HttpHeaders(), HttpStatus.OK);
 	}
