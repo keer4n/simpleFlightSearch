@@ -19,7 +19,7 @@ constructor(
 
 
 public find(input) {
-  return this.http.post("http://localhost:8080/flights/search", input);
+  return this.http.post("http://localhost:8080/flightsjson/search", input);
 }
 
 public finfByFlightNumber(flightNumber: Number) {
