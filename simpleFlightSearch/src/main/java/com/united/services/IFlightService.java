@@ -3,12 +3,8 @@ package com.united.services;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.united.entity.Flight;
 
-@Service
 public interface IFlightService {
 	
 	public List<Flight> getAllFlights();

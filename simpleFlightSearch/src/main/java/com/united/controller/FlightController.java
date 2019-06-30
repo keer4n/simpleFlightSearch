@@ -29,29 +29,26 @@ import com.united.util.common.SearchCriteria;
 public class FlightController {
 	
 	@Autowired
-	private IFlightService flightService;
+	private IFlightService iflightService;
 
 	@GetMapping
-	public ResponseEntity<List<Flight>> getFlights(HttpServletRequest request, HttpServletResponse response){
-		return new ResponseEntity<>(this.flightService.getAllFlights(), new HttpHeaders(), HttpStatus.OK);
+	public ResponseEntity<List<Flight>> getFlights(HttpServletRequest request, HttpServletResponse response) {
+		return new ResponseEntity<>(this.iflightService.getAllFlights(), new HttpHeaders(), HttpStatus.OK);
 	}
 	
 	@GetMapping (value = "/{flightNumber}")
 	public ResponseEntity<List<Flight>> getFlightsbyId(HttpServletRequest request, HttpServletResponse response, @PathVariable ("flightNumber") int flightNumber){
-		return new ResponseEntity<>(this.flightService.getFlightByFlightNumber(flightNumber), new HttpHeaders(), HttpStatus.OK);
+		return new ResponseEntity<>(this.iflightService.getFlightByFlightNumber(flightNumber), new HttpHeaders(), HttpStatus.OK);
 	}
 	
 	@PostMapping(value= "/search" )
 	public ResponseEntity<Object> searchFlights(@RequestBody FlightSearchDTO flightSearchDTO) throws ParseException{
 		List<Flight> flights = new ArrayList<Flight>();
 		if(flightSearchDTO.getSearchCriteria() == SearchCriteria.LOCATIONS) {
-			System.out.println("Searching based on location and date");
-			System.out.println(flightSearchDTO.getQueryDate());
-			flights = this.flightService.getFLightByAddressAndDeparture(flightSearchDTO.getDestinationOrOrigin(), flightSearchDTO.getQueryDate() );
+			flights = this.iflightService.getFLightByAddressAndDeparture(flightSearchDTO.getDestinationOrOrigin(), flightSearchDTO.getQueryDate() );
 		}
 		else if (flightSearchDTO.getSearchCriteria() == SearchCriteria.FLIGHTNUMBER) {
-			System.out.println("Search based on flight number and date");
-			flights = this.flightService.getFlightByFlightNumberAndDate(flightSearchDTO.getFlightNumber(), flightSearchDTO.getQueryDate());
+			flights = this.iflightService.getFlightByFlightNumberAndDate(flightSearchDTO.getFlightNumber(), flightSearchDTO.getQueryDate());
 		}
 		return new ResponseEntity <> (flights, new HttpHeaders(), HttpStatus.OK);
 	}

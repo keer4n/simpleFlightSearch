@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.united.entity.Flight;
+import com.united.entity.FlightJson;
 import com.united.repository.FlightRepository;
 import com.united.services.IFlightService;
 
@@ -40,9 +41,4 @@ public class FlightService implements IFlightService{
 		String dateQuery = formatter.format(departure);
 		return this.flightRepository.findByAddressAndDeparture(originOrDestinationAddress, dateQuery);
 	}
-	
-	
-
-
-
 }
