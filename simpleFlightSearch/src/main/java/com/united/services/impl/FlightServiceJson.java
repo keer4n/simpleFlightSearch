@@ -68,8 +68,8 @@ public class FlightServiceJson implements IFlightJsonService{
 		String newDate = fmtr.format(date);
 		System.out.println(newDate);
 		return flightjsons.stream().
-				filter(flightjson -> flightjson.getDestination().equals(originOrDestinationAddress) || 
-						flightjson.getOrigin().equals(originOrDestinationAddress) && 
+				filter(flightjson -> (flightjson.getDestination().equals(originOrDestinationAddress) || 
+						flightjson.getOrigin().equals(originOrDestinationAddress)) && 
 						flightjson.getDate().equals(newDate)).collect(Collectors.toList());
 	}
 

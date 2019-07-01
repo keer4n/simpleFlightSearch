@@ -9,6 +9,8 @@
 
 The application has two data server, first is flights.json file stored in the application and the second is mysql server
 
+The data for the application is stored inside fligt-docs folder
+
 The angular application fetch data from POST request at "http://localhost:8080/flightsjson/search" which gets data from flights.json file
 
 The restful service is also available through mysql database. (not used by front-end application). To test the restful services, follow the following instructions:
