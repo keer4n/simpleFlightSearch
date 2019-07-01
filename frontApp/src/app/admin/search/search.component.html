@@ -1,12 +1,30 @@
 <div class = "container">    
     <form  [formGroup]="searchForm" (ngSubmit)="onSubmitFlightNumber()" class="form">
         <div class="form-row align-items-center">
+           
             <div class="col-sm-3 my-1">
                 <input type="text" class="form-control form-control-lg rounded-0" formControlName = "flightNumber" placeholder="Flight Number">
-             </div>
-             <div class="col-sm-3 my-1">
-                <input type="text" class="form-control form-control-lg rounded-0" formControlName="date" placeholder = "date">
+
+             <div *ngIf="searchForm.controls['flightNumber'].errors && searchForm.controls['flightNumber'].pristine" class="error-msg">
+                <div [hidden]="!searchForm.controls['flightNumber'].errors.required">Flight Number is required.</div>
+                <div [hidden]="!searchForm.controls['flightNumber'].errors.invalid">Flight Number is invalid, min 4 digit required </div>
+              </div>
+
             </div>
+
+             <div class="col-sm-3 my-1">
+                <input type="date" class="form-control form-control-lg rounded-0" formControlName="date" placeholder = "date">
+
+
+            <div *ngIf="searchForm.controls['date'].errors && searchForm.controls['date'].pristine" class="error-msg">
+                <div [hidden]="!searchForm.controls['date'].errors.required">Date is required.</div>
+                <div [hidden]="!searchForm.controls['date'].errors.invalid">Date is invalid.</div>
+              </div>
+
+            </div>
+
+
+
             <div class="col-sm-3 my-1">
                 <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin" [disabled]="!searchForm.valid">Search</button>
             </div>
@@ -24,7 +42,7 @@
                 <input type="text" class="form-control form-control-lg rounded-0" formControlName = "address" placeholder = "Origin Or Destination">
             </div>    
             <div class="col-sm-3 my-1">
-                <input type="text" class="form-control form-control-lg rounded-0" formControlName="newDate" placeholder = "date">
+                <input type="date" class="form-control form-control-lg rounded-0" formControlName="newDate" placeholder = "date">
             </div>
             <div class="col-sm-3 my-1">
                 <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin" [disabled]="!searchFormTwo.valid">Search</button>

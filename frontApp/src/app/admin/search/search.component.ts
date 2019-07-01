@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
     private srchService: SrchService,
     private router: Router) {
     this.searchForm = formBuilder.group({
-      flightNumber: ['', [Validators.required]],
+      flightNumber: ['', [Validators.required, Validators.minLength(4)]],
       date: ['', [Validators.required]],
       remember: [1, [Validators.required]]
     });

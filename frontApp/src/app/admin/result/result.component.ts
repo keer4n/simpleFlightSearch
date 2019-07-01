@@ -17,7 +17,11 @@ export class ResultComponent implements OnInit {
    ngOnInit() {
     this.srchService.userInputEmitter.subscribe(results => {
       this.results = results;
-      this.display = true;
+      if (results == null) {
+        this.display = false;
+      } else {
+        this.display = true;
+      }
     });
   }
 
