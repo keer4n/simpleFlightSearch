@@ -1,5 +1,6 @@
 .error {
     color: red;
+    font-size: 75%;
   }
   .error-msg {
     display: block;

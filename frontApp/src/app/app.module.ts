@@ -11,10 +11,11 @@ import { ResultComponent } from './admin/result/result.component';
 import { SrchService } from './admin/srch.service';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { HeaderComponent } from './static/header/header.component';
+import { ErrorComponent } from './static/error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent, FooterComponent, SearchComponent, SearchComponent, ResultComponent, HeaderComponent
+    AppComponent, FooterComponent, SearchComponent, SearchComponent, ResultComponent, HeaderComponent, ErrorComponent
   ],
   imports: [
     BrowserModule,
