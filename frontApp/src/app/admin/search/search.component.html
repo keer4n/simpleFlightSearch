@@ -4,12 +4,12 @@
            
             <div class="col-sm-3 my-1">
                 <input type="text" class="form-control form-control-lg rounded-0" formControlName = "flightNumber" placeholder="Flight Number">
-                <div *ngIf = "!searchForm.get('flightNumber').valid" class = "error">4 digit Flight Number is required.</div>
+                <div *ngIf = "!searchForm.get('flightNumber').valid && searchForm.get('flightNumber').dirty" class = "error">4 digit Flight Number is required.</div>
             </div>
 
              <div class="col-sm-3 my-1">
                 <input type="date" class="form-control form-control-lg rounded-0" formControlName="date" placeholder = "date">
-                <div *ngIf = "!searchForm.get('date').valid" class = "error">Date field is required</div>
+                <div *ngIf = "!searchForm.get('date').valid && searchForm.get('flightNumber').dirty" class = "error">Date field is required</div>
             </div>
 
             <div class="col-sm-3 my-1">
@@ -24,11 +24,11 @@
         <div class="form-row align-items-top">
             <div class="col-sm-3 my-1">
                 <input type="text" class="form-control form-control-lg rounded-0" formControlName = "address" placeholder = "Origin Or Destination">
-                <div *ngIf = "!searchFormTwo.get('address').valid" class = "error">3 Character code in Capital required</div>
+                <div *ngIf = "!searchFormTwo.get('address').valid && searchFormTwo.get('address').dirty" class = "error">3 Character code in Capital required</div>
             </div>    
             <div class="col-sm-3 my-1">
                 <input type="date" class="form-control form-control-lg rounded-0" formControlName="newDate" placeholder = "date">
-                <div *ngIf = "!searchFormTwo.get('newDate').valid" class = "error">Date field is required</div>
+                <div *ngIf = "!searchFormTwo.get('newDate').valid && searchFormTwo.get('address').dirty" class = "error">Date field is required</div>
             </div>
             <div class="col-sm-3 my-1">
                 <button type="submit" class="btn btn-success btn-lg float-left" id="btnLogin" [disabled]="!searchFormTwo.valid">Search</button>
